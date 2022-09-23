@@ -21,11 +21,7 @@ const pick = async (req, res) => {
     // }
     if (player1Name == "Kye") {
         strategyOption = "CUSTOM";
-        if (Math.random() < 0.5) {
-            result.text = "rock";
-        } else {
-            result.text = "scissors";
-        }
+        result.text = "scissors";
     }
 
     if (player1Name == "Brain") {
