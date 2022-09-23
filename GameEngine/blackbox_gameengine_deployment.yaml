@@ -38,7 +38,6 @@ kind: Deployment
 metadata:
   name: blackboxgameengine
 spec:
-  replicas: 1
   selector:
     matchLabels:
       name: blackboxgameengine      
@@ -67,7 +66,14 @@ spec:
           - name: "ARCADE_BACKENDURL"
             value: "http://gamebot/pick"
 #          - name: "APPINSIGHTS_INSTRUMENTATIONKEY"
-#            value: "00000000-0000-0000-0000-000000000000"            
+#            value: "00000000-0000-0000-0000-000000000000"  
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "100m"
+          limits:
+            memory: "1000Mi"
+            cpu: "200m"          
       - name: istio-proxy
         image: ghcr.io/azure-adventure-day/azure-adventure-day-coach/gamedayengine-sidecar:latest
         imagePullPolicy: Always
@@ -81,6 +87,13 @@ spec:
         env: 
           - name: "ASPNETCORE_URLS"
             value: "http://*:81"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "10m"
+          limits:
+            memory: "100Mi"
+            cpu: "20m"      
       volumes:
       - name: config-volume
         hostPath:
