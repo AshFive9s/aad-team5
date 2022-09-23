@@ -19,6 +19,19 @@ const pick = async (req, res) => {
     //    strategyOption = "CUSTOM";
     //    result.text = "rock";
     // }
+    if (player1Name == "Kye") {
+        strategyOption = "CUSTOM";
+        if (Math.random() < 0.5) {
+            result.text = "rock";
+        } else {
+            result.text = "scissors";
+        }
+    }
+
+    if (player1Name == "Brain") {
+        strategyOption = "CUSTOM";
+        result.text = "paper";
+    }
 
     console.log('Against ' + player1Name + ', strategy ' + strategyOption + '  played ' + result.text);
 
